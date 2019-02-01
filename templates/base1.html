@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>This is a home page</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    
+
+  </head>
+  <body>
+    <h1>List</h1>
+
+    <div class="list">
+      {% for detail in det %}
+        <div class="1">
+          <h2><a href="{% url 'list:data' slug=detail.slug %}">{{detail.title}}</a></h2>
+        </div>
+      {% endfor %}
+
+    </div>
+<nav>
+  <ul>
+    {% if user.is_authenticated %}
+    <li>
+      <form class="logout-link" action="{%url 'accounts:logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+      </form>
+    </li>
+    <li><a href="{% url 'list:create' %}">New Article</a></li>
+    {% else %}
+      <li><a href="{% url 'accounts:log' %}">Login</a></li>
+      <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
+    {% endif %}
+</ul>
+</nav>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="create-article">
+      <h2>Create templates</h2>
+      <nav>
+        <ul>
+          <li>
+            <form class="logout-link" action="{%url 'accounts:logout' %}" method="post">
+              {% csrf_token %}
+              <button type="submit">Logout</button>
+            </form>
+          </li>
+        </ul>
+      </nav>
+
+      <<form class="site-form" action="{% url 'accounts:logout' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Create">
+      </form>
+    </div>
+  </body>
+</html>
